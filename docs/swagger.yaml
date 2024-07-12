@@ -1,0 +1,2494 @@
+basePath: /api/v1
+definitions:
+  domain.Campaign:
+    properties:
+      campaign_id:
+        type: integer
+      description:
+        type: string
+      dungeon_master:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+    type: object
+  domain.CharacterData:
+    properties:
+      age:
+        type: integer
+      alignment:
+        type: string
+      armorclass:
+        type: integer
+      background:
+        description: 'TODO: Change Type from string to Background Struct'
+        type: integer
+      campaignid:
+        type: integer
+      cha:
+        type: integer
+      characterid:
+        type: integer
+      classid:
+        description: 'TODO: Change Type from int to Class Struct'
+        type: integer
+      con:
+        type: integer
+      dex:
+        type: integer
+      exp:
+        type: integer
+      eyes:
+        type: string
+      hair:
+        type: string
+      height:
+        type: integer
+      hitDice:
+        type: string
+      hitpoints:
+        type: integer
+      img:
+        type: string
+      int:
+        type: integer
+      level:
+        type: integer
+      name:
+        type: string
+      raceid:
+        description: 'TODO: Change Type from int to Race Struct'
+        type: integer
+      skin:
+        type: string
+      speed:
+        type: integer
+      story:
+        type: string
+      str:
+        type: integer
+      userid:
+        type: string
+      weight:
+        type: integer
+      wiz:
+        type: integer
+    type: object
+  domain.CharacterFeature:
+    properties:
+      character_id:
+        type: integer
+      feature_id:
+        type: integer
+    type: object
+  domain.Class:
+    properties:
+      armor_proficiencies:
+        type: string
+      class_id:
+        type: integer
+      description:
+        type: string
+      hit_dice:
+        type: string
+      name:
+        type: string
+      proficiency_bonus:
+        type: integer
+      spellcasting_ability:
+        type: integer
+      tool_proficiencies:
+        type: string
+      weapon_proficiencies:
+        type: string
+    type: object
+  domain.Event:
+    properties:
+      dice_rolled:
+        type: boolean
+      difficulty_class:
+        type: boolean
+      environment:
+        type: string
+      event_id:
+        type: integer
+      event_protagonist_id:
+        type: integer
+      event_resolution:
+        type: string
+      event_target:
+        type: string
+      session_id:
+        type: integer
+      type:
+        type: integer
+    type: object
+  domain.EventType:
+    properties:
+      event_type_id:
+        type: integer
+      name:
+        type: string
+    type: object
+  domain.Feature:
+    properties:
+      description:
+        type: string
+      feature_id:
+        type: integer
+      name:
+        type: string
+    type: object
+  domain.Friendship:
+    properties:
+      user1_id:
+        type: string
+      user2_id:
+        type: string
+    type: object
+  domain.Item:
+    properties:
+      campaign_id:
+        type: integer
+      description:
+        type: string
+      item_id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+      weight:
+        type: integer
+    type: object
+  domain.ItemXCharacterData:
+    properties:
+      character_data_id:
+        type: integer
+      character_item_id:
+        type: integer
+      item:
+        $ref: '#/definitions/domain.Item'
+      quantity:
+        type: integer
+    type: object
+  domain.Proficiency:
+    properties:
+      name:
+        type: string
+      proficiency_id:
+        type: integer
+      type:
+        type: string
+    type: object
+  domain.ProficiencyXClass:
+    properties:
+      class_id:
+        type: integer
+      proficiency_id:
+        type: integer
+    type: object
+  domain.Session:
+    properties:
+      campaign_id:
+        type: integer
+      description:
+        type: string
+      end:
+        type: string
+      session_id:
+        type: integer
+      start:
+        type: string
+    type: object
+  domain.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  domain.UserCampaign:
+    properties:
+      campaign_id:
+        type: integer
+      is_dm:
+        type: integer
+      is_owner:
+        type: integer
+      user_campaign_id:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  domain.UserLoginInfo:
+    properties:
+      idToken:
+        type: string
+    type: object
+  domain.UserResponse:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  domain.Weapon:
+    properties:
+      ammunition:
+        type: integer
+      campaign_id:
+        type: integer
+      category:
+        type: string
+      damage:
+        type: string
+      damage_type:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      reach:
+        type: string
+      veratile_damage:
+        type: string
+      weapon_id:
+        type: integer
+      weapon_type:
+        type: string
+      weight:
+        type: integer
+    type: object
+  domain.WeaponXCharacterData:
+    properties:
+      character_data_id:
+        type: integer
+      character_weapon_id:
+        type: integer
+      equipped:
+        type: boolean
+      weapon:
+        $ref: '#/definitions/domain.Weapon'
+    type: object
+  dto.ClassDto:
+    properties:
+      armor_proficiencies:
+        type: string
+      description:
+        type: string
+      hit_dice:
+        type: string
+      name:
+        type: string
+      proficiency_bonus:
+        type: integer
+      spellcasting_ability:
+        type: integer
+      tool_proficiencies:
+        type: string
+      weapon_proficiencies:
+        type: string
+    type: object
+  dto.CreateCampaignDto:
+    properties:
+      description:
+        type: string
+      dungeon_master:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.CreateCharacterFeatureDto:
+    properties:
+      character_id:
+        type: integer
+      feature_id:
+        type: integer
+    type: object
+  dto.CreateEventDto:
+    properties:
+      dice_rolled:
+        type: boolean
+      difficulty_class:
+        type: boolean
+      environment:
+        type: string
+      event_protagonist_id:
+        type: integer
+      event_resolution:
+        type: string
+      event_target:
+        type: string
+      session_id:
+        type: integer
+      type:
+        type: integer
+    type: object
+  dto.CreateEventTypeDto:
+    properties:
+      name:
+        type: string
+    type: object
+  dto.CreateFeatureDto:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.CreateSessionDto:
+    properties:
+      campaign_id:
+        type: integer
+      description:
+        type: string
+      end:
+        type: string
+      start:
+        type: string
+    type: object
+  dto.CreateUserCampaignDto:
+    properties:
+      campaign_id:
+        type: integer
+      is_dm:
+        type: integer
+      is_owner:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  dto.FeatureFullResponseDto:
+    properties:
+      character_id:
+        type: integer
+      features:
+        items:
+          $ref: '#/definitions/domain.Feature'
+        type: array
+    type: object
+  dto.ProficiencyDto:
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.ResponseCampaignDto:
+    properties:
+      description:
+        type: string
+      dungeon_master:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+      sessions:
+        items:
+          $ref: '#/definitions/domain.Session'
+        type: array
+    type: object
+  dto.ResponseEventDto:
+    properties:
+      affected:
+        items:
+          $ref: '#/definitions/domain.CharacterData'
+        type: array
+      dice_rolled:
+        type: boolean
+      difficulty_class:
+        type: boolean
+      environment:
+        type: string
+      event_id:
+        type: integer
+      event_protagonist_id:
+        type: integer
+      event_resolution:
+        type: string
+      event_target:
+        type: string
+      session_id:
+        type: integer
+      type:
+        $ref: '#/definitions/domain.EventType'
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: API endpoints documentation.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Dicelogger API
+  version: "1.0"
+paths:
+  /campaign:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseCampaignDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all campaigns
+      tags:
+      - campaign
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateCampaignDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCampaignDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Campaign'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create campaign
+      tags:
+      - campaign
+  /campaign/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete campaign
+      tags:
+      - campaign
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ResponseCampaignDto'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get campaign by id
+      tags:
+      - campaign
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: CreateCampaignDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCampaignDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ResponseCampaignDto'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update campaign
+      tags:
+      - campaign
+  /campaign/user/{id}:
+    get:
+      parameters:
+      - description: user_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseCampaignDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get campaigns by user id
+      tags:
+      - campaign
+  /character_feature:
+    delete:
+      parameters:
+      - description: CreateCharacterFeatureDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCharacterFeatureDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete characterFeature
+      tags:
+      - characterFeature
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.CharacterFeature'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all characterFeatures
+      tags:
+      - characterFeature
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateCharacterFeatureDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCharacterFeatureDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.CharacterFeature'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create characterFeature
+      tags:
+      - characterFeature
+  /character_feature/character/{id}:
+    get:
+      parameters:
+      - description: character_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.CharacterFeature'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get characterFeature by character id
+      tags:
+      - characterFeature
+  /character_feature/feature/{id}:
+    get:
+      parameters:
+      - description: feature_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.CharacterFeature'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get characterFeature by feature id
+      tags:
+      - characterFeature
+  /class:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Class'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all classes
+      tags:
+      - class
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ClassDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClassDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Class'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create class
+      tags:
+      - class
+  /class/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete class
+      tags:
+      - class
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Class'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get class by id
+      tags:
+      - class
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: ClassDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClassDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Class'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update class
+      tags:
+      - class
+  /event:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseEventDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all events
+      tags:
+      - event
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateEventDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateEventDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Event'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create event
+      tags:
+      - event
+  /event/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete event
+      tags:
+      - event
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ResponseEventDto'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get event by id
+      tags:
+      - event
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: CreateEventDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateEventDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Event'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update event
+      tags:
+      - event
+  /event/protagonist/{id}:
+    get:
+      parameters:
+      - description: protagonist_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseEventDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get event by protagonist id
+      tags:
+      - event
+  /event/session/{id}:
+    get:
+      parameters:
+      - description: session_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseEventDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get event by session id
+      tags:
+      - event
+  /event/type/{id}:
+    get:
+      parameters:
+      - description: type_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ResponseEventDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get event by id
+      tags:
+      - event
+  /event_type:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.EventType'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all eventTypes
+      tags:
+      - eventType
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateEventTypeDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateEventTypeDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.EventType'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create eventType
+      tags:
+      - eventType
+  /event_type/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete eventType
+      tags:
+      - eventType
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.EventType'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get eventType by id
+      tags:
+      - eventType
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: CreateEventTypeDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateEventTypeDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.EventType'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update eventType
+      tags:
+      - eventType
+  /event_type/{name}:
+    get:
+      parameters:
+      - description: name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.EventType'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get eventType by name
+      tags:
+      - eventType
+  /feature:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Feature'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all features
+      tags:
+      - feature
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateFeatureDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateFeatureDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Feature'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create feature
+      tags:
+      - feature
+  /feature/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete feature
+      tags:
+      - feature
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Feature'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get feature by id
+      tags:
+      - feature
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: CreateFeatureDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateFeatureDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Feature'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update feature
+      tags:
+      - feature
+  /feature/character/{id}:
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.FeatureFullResponseDto'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all features by character id
+      tags:
+      - feature
+  /friendship:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Friendship
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Friendship'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete friendship
+      tags:
+      - friendship
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Friendship
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Friendship'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Friendship'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create friendship
+      tags:
+      - friendship
+  /item:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Item'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all items
+      tags:
+      - item
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Item
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Item'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Item'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create item
+      tags:
+      - item
+  /item/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete item
+      tags:
+      - item
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Item'
+        "404":
+          description: Not Found
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get item by id
+      tags:
+      - item
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Item
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Item'
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Item'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update item
+      tags:
+      - item
+  /item/campaign/{id}:
+    get:
+      parameters:
+      - description: campaign_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Item'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get items by campaign id
+      tags:
+      - item
+  /item/generic:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Item'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all generic items
+      tags:
+      - item
+  /item_character:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.ItemXCharacterData'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all itemXCharacterData
+      tags:
+      - itemXCharacterData
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ItemXCharacterData
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.ItemXCharacterData'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.ItemXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create itemXCharacterData
+      tags:
+      - itemXCharacterData
+  /item_character/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete itemXCharacterData
+      tags:
+      - itemXCharacterData
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.ItemXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Get itemXCharacterData by id
+      tags:
+      - itemXCharacterData
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: ItemXCharacterData
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.ItemXCharacterData'
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.ItemXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update itemXCharacterData
+      tags:
+      - itemXCharacterData
+  /item_character/character/{id}:
+    delete:
+      parameters:
+      - description: character_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete itemXCharacterData by character id
+      tags:
+      - itemXCharacterData
+    get:
+      parameters:
+      - description: character_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.ItemXCharacterData'
+            type: array
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get itemXCharacterData by character id
+      tags:
+      - itemXCharacterData
+  /proficiency:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Proficiency'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all proficiencies
+      tags:
+      - proficiency
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ProficiencyDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ProficiencyDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Proficiency'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create proficiency
+      tags:
+      - proficiency
+  /proficiency/{id}:
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Proficiency'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get proficiency by id
+      tags:
+      - proficiency
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: ProficiencyDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ProficiencyDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Proficiency'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update proficiency
+      tags:
+      - proficiency
+  /proficiencyxclass:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ProficiencyXClass
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.ProficiencyXClass'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete proficiencyXclass
+      tags:
+      - proficiencyXclass
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ProficiencyXClass
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.ProficiencyXClass'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.ProficiencyXClass'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create proficiencyXclass
+      tags:
+      - proficiencyXclass
+  /session:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Session'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all sessions
+      tags:
+      - session
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateSessionDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateSessionDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Session'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create session
+      tags:
+      - session
+  /session/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete session
+      tags:
+      - session
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Session'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get session by id
+      tags:
+      - session
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: CreateSessionDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateSessionDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Session'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update session
+      tags:
+      - session
+  /session/campaign/{id}:
+    get:
+      parameters:
+      - description: campaign_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Session'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get session by campaign id
+      tags:
+      - session
+  /user:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.UserResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all users
+      tags:
+      - user
+  /user/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete user
+      tags:
+      - user
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get user by id
+      tags:
+      - user
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.User'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Partially update user
+      tags:
+      - user
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.User'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update user
+      tags:
+      - user
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: UserLoginInfo
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserLoginInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Login user
+      tags:
+      - user
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Register user
+      tags:
+      - user
+  /user_campaign:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.UserCampaign'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all user_campaign
+      tags:
+      - user_campaign
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUserCampaignDto
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUserCampaignDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.UserCampaign'
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create user_campaign
+      tags:
+      - user_campaign
+  /user_campaign/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Delete user_campaign
+      tags:
+      - user_campaign
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.UserCampaign'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get user_campaign by id
+      tags:
+      - user_campaign
+  /user_campaign/campaign/{id}:
+    get:
+      parameters:
+      - description: campaign_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.UserCampaign'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get user_campaign by campaign id
+      tags:
+      - user_campaign
+  /user_campaign/user/{id}:
+    get:
+      parameters:
+      - description: user_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.UserCampaign'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get user_campaign by user id
+      tags:
+      - user_campaign
+  /weapon:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Weapon'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all weapons
+      tags:
+      - weapon
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Weapon
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Weapon'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Weapon'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create weapon
+      tags:
+      - weapon
+  /weapon/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete weapon
+      tags:
+      - weapon
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Weapon'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get weapon by id
+      tags:
+      - weapon
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Weapon
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Weapon'
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Weapon'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update weapon
+      tags:
+      - weapon
+  /weapon/campaign/{id}:
+    get:
+      parameters:
+      - description: campaign_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Weapon'
+            type: array
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get weapons by campaign id
+      tags:
+      - weapon
+  /weapon/generic:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Weapon'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all generic weapons
+      tags:
+      - weapon
+  /weapon_character:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.WeaponXCharacterData'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get all weaponXCharacterData
+      tags:
+      - weaponXCharacterData
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: WeaponXCharacterData
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.WeaponXCharacterData'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.WeaponXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Create weaponXCharacterData
+      tags:
+      - weaponXCharacterData
+  /weapon_character/{id}:
+    delete:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete weaponXCharacterData
+      tags:
+      - weaponXCharacterData
+    get:
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.WeaponXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get weaponXCharacterData by id
+      tags:
+      - weaponXCharacterData
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: WeaponXCharacterData
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.WeaponXCharacterData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.WeaponXCharacterData'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Update weaponXCharacterData
+      tags:
+      - weaponXCharacterData
+  /weapon_character/character/{id}:
+    delete:
+      parameters:
+      - description: character_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+      summary: Delete weaponXCharacterData by character id
+      tags:
+      - weaponXCharacterData
+    get:
+      parameters:
+      - description: character_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.WeaponXCharacterData'
+            type: array
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Get weaponXCharacterData by character id
+      tags:
+      - weaponXCharacterData
+swagger: "2.0"
