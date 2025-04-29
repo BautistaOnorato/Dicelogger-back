@@ -3,6 +3,7 @@ package weaponxcharacterdata
 import (
 	"database/sql"
 	"errors"
+
 	"github.com/proyecto-dnd/backend/internal/domain"
 )
 
@@ -23,22 +24,22 @@ func (r *weaponXCharacterDataSqlRepository) Create(weaponXCharacterData domain.W
 		return domain.WeaponXCharacterData{}, ErrPrepareStatement
 	}
 	defer statement.Close()
-
+	
 	result, err := statement.Exec(
 		weaponXCharacterData.CharacterData_Id,
 		weaponXCharacterData.Weapon.Weapon_Id,
 		weaponXCharacterData.Equipped,
 	)
-
+	
 	if err != nil {
 		return domain.WeaponXCharacterData{}, err
 	}
-
+	
 	lastId, err := result.LastInsertId()
 	if err != nil {
 		return domain.WeaponXCharacterData{}, ErrGettingLastInsertId
 	}
-
+	
 	weaponXCharacterData.Character_Weapon_Id = int(lastId)
 
 	return weaponXCharacterData, nil

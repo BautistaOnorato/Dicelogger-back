@@ -3,6 +3,8 @@ package weapon
 import (
 	"database/sql"
 	"errors"
+	"log"
+
 	"github.com/proyecto-dnd/backend/internal/domain"
 )
 
@@ -189,8 +191,10 @@ func (r *weaponMySqlRepository) GetByCampaignId(campaignId int) ([]domain.Weapon
 
 // GetById implements RepositoryWeapon.
 func (r *weaponMySqlRepository) GetById(id int) (domain.Weapon, error) {
+	log.Println("GetById", id)
 	row := r.db.QueryRow(QueryGetById, id)
- 
+	log.Println(1)
+	
 	var weapon domain.Weapon
 	err := row.Scan(
 		&weapon.Weapon_Id,
@@ -208,9 +212,11 @@ func (r *weaponMySqlRepository) GetById(id int) (domain.Weapon, error) {
 		&weapon.Campaign_Id,
 	)
 	if err != nil {
+		log.Println(2, err)
 		return domain.Weapon{}, ErrNotFound
 	}
-
+	
+	log.Println(3)
 	return weapon, nil
 }
 

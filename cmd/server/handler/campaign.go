@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -113,17 +114,23 @@ func (h *CampaignHandler) HandlerGetById() gin.HandlerFunc {
 // @Router /campaign/user/{id} [get]
 func (h *CampaignHandler) HandlerGetByUserId() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
+		log.Println("HandlerGetByUserId")
+		
 		cookie, err := ctx.Request.Cookie("Session")
 		if err != nil {
+			log.Println(1, err)
 			ctx.JSON(400, err)
 			return
 		}
-
+		
+		log.Println(2)
 		tempCampaign, err := h.service.GetCampaignsByUserId(cookie.Value)
 		if err != nil {
+			log.Println(3, err)
 			ctx.JSON(500, err.Error())
 			return
 		}
+		log.Println(4)
 		ctx.JSON(200, tempCampaign)
 	}
 }

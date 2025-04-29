@@ -59,7 +59,7 @@ func (r *CharacterDataMySqlRepository) Create(character domain.CharacterData) (d
 	defer statement.Close()
 	result, err := statement.Exec(
 		character.User_Id,
-		character.Campaign_Id,
+		1,
 		character.Race.RaceID,
 		character.Class.ClassId,	
 		character.Background.BackgroundID,

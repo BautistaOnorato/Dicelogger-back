@@ -1,6 +1,7 @@
 package campaign
 
 import (
+	"log"
 	"sync"
 
 	"github.com/proyecto-dnd/backend/internal/characterData"
@@ -179,27 +180,33 @@ func (s *service) GetCampaignByID(id int) (dto.ResponseCampaignDto, error) {
 }
 
 func (s *service) GetCampaignsByUserId(cookie string) ([]dto.ResponseCampaignDto, error) {
+	log.Println("GetCampaignsByUserId")
 	var uid string
 
 	user, err := s.userService.GetJwtInfo(cookie)
 	if err != nil {
+		log.Println(1, err)
 		return nil, err
 	}
-
+	
+	log.Println(2)
 	uid = user.Id
-
+	
 	campaigns, err := s.campaignRepository.GetCampaignsByUserId(uid)
 	if err != nil {
+		log.Println(3, err)
 		return nil, err
 	}
-
+	
+	log.Println(4)
 	var responseCampaigns []dto.ResponseCampaignDto
 	for _, campaign := range campaigns {
 		sessions, err := s.sessionService.GetSessionsByCampaignId(campaign.CampaignId)
 		if err != nil {
+			log.Println(5, err)
 			return nil, err
 		}
-
+		
 		responseCampaign := dto.ResponseCampaignDto{
 			CampaignId:    campaign.CampaignId,
 			DungeonMaster: campaign.DungeonMaster,
@@ -210,10 +217,11 @@ func (s *service) GetCampaignsByUserId(cookie string) ([]dto.ResponseCampaignDto
 			Status:        campaign.Status,
 			Sessions:      sessions,
 		}
-
+		
 		responseCampaigns = append(responseCampaigns, responseCampaign)
 	}
-
+	
+	log.Println(6)
 	return responseCampaigns, nil
 }
 

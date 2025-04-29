@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -28,17 +29,21 @@ func NewWeaponXCharacterDataHandler(service *weaponxcharacterdata.ServiceWeaponX
 // @Router /weapon_character [post]
 func (h *WeaponXCharacterDataHandler) HandlerCreate() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
+		log.Println(1)
 		var tempWeaponXCharacterData domain.WeaponXCharacterData
 		if err := ctx.BindJSON(&tempWeaponXCharacterData); err != nil {
+			log.Println(2, err)
 			ctx.AbortWithError(400, err)
 			return
 		}
 		createdWeaponXCharacterData, err := h.service.Create(tempWeaponXCharacterData)
 		if err != nil {
+			log.Println(3, err)
 			ctx.AbortWithError(500, err)
 			return
 		}
-
+		
+		log.Println(4)
 		ctx.JSON(201, createdWeaponXCharacterData)
 	}
 }
